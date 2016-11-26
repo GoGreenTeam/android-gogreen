@@ -1,4 +1,4 @@
-package com.green.go.gogreen;
+package com.green.go;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

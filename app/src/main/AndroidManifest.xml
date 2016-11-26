@@ -9,7 +9,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".ui.ActivityFeed"
+            android:name="com.green.go.ui.ActivityFeed"
             android:label="@string/title_activity_feed"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -18,15 +18,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.ActivityBase" />
+        <activity android:name="com.green.go.ui.ActivityBase" />
         <activity
-            android:name=".ui.ActivityDenunciar"
+            android:name="com.green.go.ui.ActivityDenunciar"
             android:label="@string/title_activity_denunciar"
-            android:parentActivityName=".ui.ActivityFeed"
+            android:parentActivityName="com.green.go.ui.ActivityFeed"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.green.go.gogreen.ui.ActivityFeed" />
+                android:value="com.green.go.ui.ActivityFeed" />
         </activity>
     </application>
 

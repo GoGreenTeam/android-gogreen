@@ -1,4 +1,4 @@
-package com.green.go.gogreen.ui;
+package com.green.go.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,8 +6,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.view.View;
 
 import com.green.go.gogreen.R;
-import com.green.go.gogreen.interfaces.FeedInteractionListener;
-import com.green.go.gogreen.ui.ActivityBase;
+import com.green.go.interfaces.FeedInteractionListener;
 
 public class ActivityFeed extends ActivityBase implements FeedInteractionListener, View.OnClickListener {
 

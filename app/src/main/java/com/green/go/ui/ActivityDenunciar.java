@@ -1,4 +1,4 @@
-package com.green.go.gogreen.ui;
+package com.green.go.ui;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;

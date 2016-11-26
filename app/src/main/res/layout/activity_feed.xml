@@ -6,13 +6,13 @@
     android:layout_height="match_parent"
     android:layout_margin="@dimen/feeds_fragment_margin"
     android:fitsSystemWindows="true"
-    tools:context=".ui.ActivityFeed">
+    tools:context="com.green.go.ui.ActivityFeed">
 
     <fragment xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/fragment"
-        android:name="com.green.go.gogreen.ui.ActivityFeedFragment"
+        android:name="com.green.go.ui.ActivityFeedFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"

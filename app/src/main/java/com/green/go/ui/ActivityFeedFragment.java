@@ -1,4 +1,4 @@
-package com.green.go.gogreen.ui;
+package com.green.go.ui;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -10,8 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.green.go.gogreen.R;
-import com.green.go.gogreen.adapters.AdapterFeeds;
-import com.green.go.gogreen.interfaces.FeedInteractionListener;
+import com.green.go.adapters.AdapterFeeds;
+import com.green.go.interfaces.FeedInteractionListener;
 
 import java.util.ArrayList;
 

@@ -1,4 +1,4 @@
-package com.green.go.gogreen.adapters;
+package com.green.go.adapters;
 
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -10,7 +10,6 @@ import android.widget.TextView;
 import com.green.go.gogreen.R;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by navega on 11/26/16.

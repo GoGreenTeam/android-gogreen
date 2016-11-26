@@ -1,4 +1,4 @@
-package com.green.go.gogreen;
+package com.green.go;
 
 import org.junit.Test;
 
