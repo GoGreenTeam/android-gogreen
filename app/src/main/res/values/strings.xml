@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">GoGreen</string>
+    <string name="title_activity_base">ActivityBase</string>
+    <string name="title_activity_feed">Feed</string>
+
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_denunciar">Nova Denuncia</string>
+
+
+    <!--denunciar_fragment -->
+    <string name="denunciar_title">Titulo</string>
+    <string name="denunciar_descricao">Descricao</string>
+    <string name="denunciar_localizacao">Localidade</string>
+
+
+</resources>
