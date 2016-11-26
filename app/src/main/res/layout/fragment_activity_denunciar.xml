@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/content_activity_denunciar"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
@@ -11,32 +12,40 @@
     tools:context="com.green.go.ui.ActivityDenunciarFragment"
     tools:showIn="@layout/activity_denunciar">
 
+
+    <EditText
+        android:id="@+id/denunciar_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/denunciar_title" />
+
+    <EditText
+        android:id="@+id/denunciar_descricao"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/denunciar_descricao" />
+
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <EditText
-            android:id="@+id/denunciar_title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Write Caption" />
-
-        <EditText
-            android:id="@+id/denunciar_descricao"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
+        <EditText
+            android:id="@+id/denunciar_localidade"
+            android:layout_width="325dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/denunciar_localizacao"
+            android:inputType="textImeMultiLine" />
 
-
+        <ImageView
+            android:id="@+id/denunciar_place"
+            android:layout_width="@dimen/denuncia_place_size"
+            android:layout_height="@dimen/denuncia_place_size"
+            android:background="@drawable/ic_place"
+            android:lines="6"
+            android:minLines="4" />
 
     </LinearLayout>
 
-</RelativeLayout>
+</LinearLayout>
