@@ -13,6 +13,9 @@ public class Denuncia implements Parcelable {
     private String mDescricao;
     private String mLocalizacao;
 
+    public Denuncia() {
+    }
+
     public Denuncia(String mTitulo, String mDescricao, String mLocalizacao) {
         this.mTitulo = mTitulo;
         this.mDescricao = mDescricao;

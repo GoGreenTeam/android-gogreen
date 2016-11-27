@@ -10,12 +10,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.green.go.dataparser.DenunciaDataParser;
 import com.green.go.gogreen.R;
 import com.green.go.adapters.AdapterFeeds;
 import com.green.go.interfaces.FeedInteractionListener;
 import com.green.go.models.Denuncia;
 import com.green.go.server.Request;
 import com.green.go.util.Util;
+
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -33,9 +36,6 @@ public class ActivityFeedFragment extends Fragment {
     private RecyclerView mRecycler;
     private FeedInteractionListener mListener;
     private SwipeRefreshLayout mSwipe;
-
-    //data
-    private ArrayList<Denuncia> mDataSet;
 
 
     public ActivityFeedFragment() {
@@ -60,13 +60,6 @@ public class ActivityFeedFragment extends Fragment {
         if (getArguments() != null) {
             //mParam1 = getArguments().getString(ARG_PARAM1);
         }
-
-        //dummy data
-        mDataSet = new ArrayList<>();
-        mDataSet.add(new Denuncia("Titulo 1", "Descricao 2", "Localizacao 3"));
-        mDataSet.add(new Denuncia("Titulo 2", "Descricao 2", "Localizacao 3"));
-        mDataSet.add(new Denuncia("Titulo 3", "Descricao 2", "Localizacao 3"));
-        mDataSet.add(new Denuncia("Titulo 4", "Descricao 2", "Localizacao 3"));
     }
 
     @Override
@@ -75,23 +68,17 @@ public class ActivityFeedFragment extends Fragment {
 
         mRecycler = (RecyclerView) view.findViewById(R.id.feeds_recycler);
         mRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
-        mRecycler.setAdapter(new AdapterFeeds(getContext(), mDataSet));
 
         mSwipe = (SwipeRefreshLayout) view.findViewById(R.id.swipe_refresh_layout);
         mSwipe.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                new Request(getContext()) {
-                    @Override
-                    public void onPostExecute(String data) {
-                        super.onPostExecute(data);
-                        System.out.println("----->" + data);
-                        mSwipe.setRefreshing(false);
-                    }
-                }.execute(Util.SERVER);
+                mSwipe.setRefreshing(false);
+                callGetPublicacoes();
             }
         });
 
+        callGetPublicacoes();
         return view;
     }
 
@@ -111,5 +98,16 @@ public class ActivityFeedFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    private void callGetPublicacoes() {
+        new Request(getContext()) {
+            @Override
+            public void onPostExecute(JSONObject data) {
+                super.onPostExecute(data);
+                mSwipe.setRefreshing(false);
+                new DenunciaDataParser(getContext(), mRecycler).execute(data);
+            }
+        }.execute(Util.SERVER);
     }
 }

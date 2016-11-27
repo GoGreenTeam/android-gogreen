@@ -12,19 +12,25 @@ import org.apache.http.*;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
+import org.json.JSONException;
+import org.json.JSONObject;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.net.*;
+import java.nio.charset.Charset;
 
 
-public class Request extends AsyncTask<String, Boolean, String> {
+public class Request extends AsyncTask<String, Boolean, JSONObject> {
+
+    private static final int HTTP_TIMEOUT = 5000;
 
     private boolean hasInternet = true;
-
-    private HttpClient httpclient;
 
     public Request(Context context) {
 
@@ -37,31 +43,34 @@ public class Request extends AsyncTask<String, Boolean, String> {
 
     }
 
-    protected String doInBackground(String... urls) {
+    protected JSONObject doInBackground(String... urls) {
         //if (Util.hasInternetAccess(this.mContext) == false) {
         //    this.hasInternet = false;
         //    publishProgress(false);
         //}
 
-        StringBuffer chaine = new StringBuffer("");
-        String line = "";
-
+        String json = null;
+        JSONObject jsonObject = null;
         try {
             URL url = new URL(urls[0]);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-            connection.setRequestProperty("User-Agent", "");
-            connection.setRequestMethod("POST");
+            connection.setConnectTimeout(HTTP_TIMEOUT);
             connection.setDoInput(true);
+            connection.setDoOutput(true);
+            connection.setUseCaches(false);
+            connection.setRequestProperty("Content-Type", "application/json");
             connection.connect();
 
-            InputStream inputStream = connection.getInputStream();
+            InputStream inputStream = new BufferedInputStream(connection.getInputStream());
+            BufferedReader rd = new BufferedReader(new InputStreamReader(inputStream, Charset.forName("UTF-8")));
+            json = read(rd);
+            jsonObject = new JSONObject(json);
 
-            BufferedReader rd = new BufferedReader(new InputStreamReader(inputStream));
-            while ((line = rd.readLine()) != null) {
-                chaine.append(line);
-            }
+
         } catch (IOException e) {
             // Writing exception to log
+            e.printStackTrace();
+        } catch (JSONException e) {
             e.printStackTrace();
         }
 
@@ -70,11 +79,22 @@ public class Request extends AsyncTask<String, Boolean, String> {
             publishProgress(true);
             return null;
         }
-        return line;
+
+
+        return jsonObject;
     }
 
 
-    public void onPostExecute(String data) {
+    public void onPostExecute(JSONObject data) {
     }
 
+
+    private String read(BufferedReader rd) throws IOException {
+        StringBuilder sb = new StringBuilder();
+        String temp = "";
+        while ((temp = rd.readLine()) != null) {
+            sb.append(temp);
+        }
+        return sb.toString();
+    }
 }
