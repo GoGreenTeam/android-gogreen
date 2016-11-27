@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/content_activity_denunciar"
     android:layout_width="match_parent"
@@ -12,18 +13,19 @@
     tools:context="com.green.go.ui.ActivityDenunciarFragment"
     tools:showIn="@layout/activity_denunciar">
 
-
     <EditText
         android:id="@+id/denunciar_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/denunciar_title" />
+        android:hint="@string/denunciar_title"
+        android:padding="@dimen/edit_text_spacing" />
 
     <EditText
         android:id="@+id/denunciar_descricao"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/denunciar_descricao" />
+        android:hint="@string/denunciar_descricao"
+        android:padding="@dimen/edit_text_spacing" />
 
 
     <LinearLayout
@@ -31,12 +33,11 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <EditText
-            android:id="@+id/denunciar_localidade"
+        <Spinner
+            android:id="@+id/denunciar_concelho_spinner"
             android:layout_width="325dp"
             android:layout_height="wrap_content"
-            android:hint="@string/denunciar_localizacao"
-            android:inputType="textImeMultiLine" />
+            android:padding="@dimen/edit_text_spacing" />
 
         <ImageView
             android:id="@+id/denunciar_place"
@@ -44,8 +45,17 @@
             android:layout_height="@dimen/denuncia_place_size"
             android:background="@drawable/ic_place"
             android:lines="6"
-            android:minLines="4" />
+            android:minLines="4"
+            android:padding="@dimen/edit_text_spacing" />
 
     </LinearLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin"
+        app:srcCompat="@drawable/ic_send" />
 
 </LinearLayout>

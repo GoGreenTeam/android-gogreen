@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="@dimen/feeds_fragment_margin"
+    android:background="@color/colorBackground1"
     android:fitsSystemWindows="true"
     tools:context="com.green.go.ui.ActivityFeed">
 
@@ -15,6 +15,7 @@
         android:name="com.green.go.ui.ActivityFeedFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_margin="@dimen/feeds_fragment_margin"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         tools:layout="@layout/fragment_feed" />
 

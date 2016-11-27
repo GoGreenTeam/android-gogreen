@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">GoGreen</string>
-    <string name="title_activity_base">ActivityBase</string>
-    <string name="title_activity_feed">Feed</string>
+    <string name="title_activity_base">GoGreen</string>
+    <string name="title_activity_feed">GoGreen</string>
 
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
@@ -9,8 +9,7 @@
 
     <string name="action_settings">Settings</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- titles toolbar -->
     <string name="title_activity_denunciar">Nova Denuncia</string>
 
 
@@ -19,6 +18,16 @@
     <string name="denunciar_descricao">Descricao</string>
     <string name="denunciar_localizacao">Localidade</string>
 
+    <string-array name="concelhos_array">
+        <item>Amarante</item>
+        <item>Felgueiras</item>
+        <item>Guimarães</item>
+        <item>Mars</item>
+        <item>Jupiter</item>
+        <item>Saturn</item>
+        <item>Uranus</item>
+        <item>Neptune</item>
+    </string-array>
 
 
 

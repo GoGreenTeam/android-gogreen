@@ -11,16 +11,14 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.green.go.dataparser.DenunciaDataParser;
+import com.green.go.enums.REQUEST_TYPE;
 import com.green.go.gogreen.R;
-import com.green.go.adapters.AdapterFeeds;
 import com.green.go.interfaces.FeedInteractionListener;
 import com.green.go.models.Denuncia;
 import com.green.go.server.Request;
 import com.green.go.util.Util;
 
 import org.json.JSONObject;
-
-import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -89,8 +87,7 @@ public class ActivityFeedFragment extends Fragment {
         if (context instanceof FeedInteractionListener) {
             mListener = (FeedInteractionListener) context;
         } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
+            throw new RuntimeException(context.toString() + " must implement FeedInteractionListener");
         }
     }
 
@@ -101,13 +98,15 @@ public class ActivityFeedFragment extends Fragment {
     }
 
     private void callGetPublicacoes() {
-        new Request(getContext()) {
+        new Request(REQUEST_TYPE.GET, getContext(), null) {
             @Override
             public void onPostExecute(JSONObject data) {
                 super.onPostExecute(data);
                 mSwipe.setRefreshing(false);
-                new DenunciaDataParser(getContext(), mRecycler).execute(data);
+                if (data != null) {
+                    new DenunciaDataParser(getContext(), mRecycler).execute(data);
+                }
             }
-        }.execute(Util.SERVER);
+        }.execute(Util.REQUEST_GET_PUBLICACOES);
     }
 }

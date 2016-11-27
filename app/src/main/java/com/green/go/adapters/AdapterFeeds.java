@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.green.go.gogreen.R;
 import com.green.go.models.Denuncia;
 import com.green.go.ui.ActivityDenunciar;
+import com.green.go.util.Util;
 
 import java.util.ArrayList;
 
@@ -45,6 +46,7 @@ public class AdapterFeeds extends RecyclerView.Adapter<AdapterFeeds.ViewHolder> 
             public void onClick(View view) {
                 Intent intent = new Intent(mContext, ActivityDenunciar.class);
                 intent.putExtra("DENUNCIA", mDataSet.get(position));
+                intent.putExtra(Util.ARG_MODO, Util.ARG_MODO_VER);
                 mContext.startActivity(intent);
             }
         });

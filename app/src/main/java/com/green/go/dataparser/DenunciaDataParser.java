@@ -24,13 +24,10 @@ public class DenunciaDataParser extends AsyncTask<JSONObject, ArrayList<Denuncia
     private RecyclerView mRecycler;
     private Context mContext;
 
-
-
     public DenunciaDataParser(Context mContext, RecyclerView mRecycler) {
         this.mRecycler = mRecycler;
         this.mContext = mContext;
     }
-
 
     @Override
     protected ArrayList<Denuncia> doInBackground(JSONObject... strings) {
